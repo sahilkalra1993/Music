@@ -1,0 +1,57 @@
+{% extends 'Songs/base.html' %}
+{% block body %}
+
+<h2>{{album.album_title}}</h2>
+<h3> {{album.artist }}</h3><br>
+<img src="{{album.album_logo}}"><br>
+	{% for song in album.song_set.all %}
+	<ul>
+		<li> <h5> {{song }}</h5> </li>
+	</ul>
+	{% endfor %}
+{% endblock %}
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+<!--
+
+<form action="url 'Songs:details' album.id" method="get">
+  First name: <input type="text" name="fname"><br>
+  Last name: <input type="text" name="lname"><br>
+  <input type="submit" value="Submit">
+</form>
+
+-->
+
+
+
+
+<!--
+
+{% for song in album.song_set.all %}
+	<br>
+	<li> {{song.id}} </li>
+{%endfor%}
+ -->

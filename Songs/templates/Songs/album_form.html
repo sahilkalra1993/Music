@@ -1,0 +1,12 @@
+<form class="form-horizontal" action="" method="Post" enctype="multipart/form-data">
+	{% csrf_token %}
+	{% for field in form %}
+		<div class = "form-group">
+		
+		<label> {{field.label_tag}}</label>
+		<div>{{field}}</div>
+		</div>
+	{% endfor %}
+	<button type="submit" class="btn btn-success"> Submit</button>
+	
+</form>

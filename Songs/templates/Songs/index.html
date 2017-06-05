@@ -1,0 +1,98 @@
+{% extends 'Songs/base.html' %}
+{% block body%}
+
+{% for album in all_albums %}
+	<div class="col-sm-4 col-lg-3">
+		<div class="thumbnail">
+        		<a href="{% url 'songs:details' album.id %}">
+        		<img src="{{ album.album_logo }}" class="img-responsive">
+                	</a>
+       		<div class="caption">
+				<h2>{{ album.album_title }}</h2>
+            	<h4>{{ album.artist }}</h4>
+            
+			</div>
+			<div>
+				<a href="{% url 'songs:details' album.id %}">
+				<button type="button" class="btn btn-primary btn-sm">View Details</button>
+				</a>
+				<a href="{% url 'songs:album-update' album.id %}">
+				<button type="button" class="btn btn-primary btn-sm">Update Details</button>
+				</a>
+			
+				<form method="POST" action="{% url 'songs:album-delete' album.id %}" style="display: inline;">
+   					{% csrf_token %}
+   					<input type="hidden" name="album_id" value="{{ album.id }}" />
+                 	<button type="submit" class="btn btn-sm"><span class="glyphicon glyphicon-trash"></span>
+                 	</button>
+				</form>
+			</div>
+     	</div>
+     </div>
+{% endfor %}
+{% endblock %}
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+<!--  
+{% load staticfiles %}
+<link rel="stylesheet" type="text/css" href="{% static 'Songs/style.css' %}" />
+<link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.6/css/bootstrap.min.css" />
+<link rel="stylesheet" type="text/css" href="//fonts.googleapis.com/css?family=Lobster"   />
+
+
+<nav class="navbar navbar-inverse">
+  <div class="container-fluid">
+    <div class="navbar-header">
+      <a class="navbar-brand" href="{% url 'songs:index' %}">RS Enterprise</a>
+    </div>
+    <ul class="nav navbar-nav">
+      <li class="active"><a href="#">Home</a></li>
+      <li><a href="#">Page 1</a></li>
+      <li><a href="#">Page 2</a></li>
+      <li><a href="#">Page 3</a></li>
+    </ul>
+  </div>
+</nav>
+
+<h3>Available Albums</h3>
+<ul>
+	{% for album in all_albums %}
+	<li><a href="{% url 'songs:details' album.id %}"><h4>"{{album.album_title}}"</h4></a></li>
+	{% endfor %}
+</ul>
+
+-->
+
+
+
+
+
+
+<!--
+<ul>
+	{% for album in all_albums %}
+	<li><a href="{% url 'songs:details' album.id %}"><h4>"{{album.album_title}}"</h4></a></li>
+	{% endfor %}
+</ul>
+-->
